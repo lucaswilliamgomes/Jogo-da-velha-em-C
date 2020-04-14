@@ -1,2 +1,3 @@
 # Jogo da velha em C
- Meu primeiro projeto de programação 
+ My firth project of programation! 
+ 
