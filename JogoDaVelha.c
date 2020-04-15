@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-struct cadastro {
+//essa struct é responsavel por guardar os nicknames dos jogadores
+struct cadastro { 
     char jogador1 [21];
     char jogador2 [21];
 }jogador;
 
-
+//Imprime o menu inicial
 void menuInicial (void){
 
     printf("********JOGO DA VELHA********\n\n");
@@ -17,7 +17,7 @@ void menuInicial (void){
     printf("3 - Sair do jogo\n\n");
     printf("******************************\n");
 }
-
+// Cadastra os 2 jogadores, usando a struct cadastro 
 void cadastrarJogadores (void){
 
     printf("Digite o nickname do jogador 1 [com no max 20 caracteres]\n");
@@ -37,29 +37,36 @@ int main (void){
     menuInicial();
 
     scanf ("%d", &opcao);
-
+    
+    /* Esse ciclo tem a funcao de tornar invalida qualquer escolha 
+    de opcao que nao esta no menu */
     for ( ; opcao != 1 && opcao != 2 && opcao != 3 ; )
     {   system ("cls");
         printf ("\nOPCAO INVALIDA\n");
         menuInicial();
         scanf ("%d", &opcao);
     }
+    /*  Switch Case e algo muito util pasa se usar em menus,
+        cada opcao ira levar a um caminho a ser seguido pelo programa */
         switch (opcao)
         {
-         case 1 :
+         case 1 :// Cadastrar 2 jogadores 
            system ("cls");
            cadastrarJogadores ();
            printf ("o nome do jogador 1 eh %s\n", jogador.jogador1);
            printf ("o nome do jogador 2 eh %s\n", jogador.jogador2);
             system ("pause");
             system ("cls");
-           
+           /* strcmp e usado para comparar strings, 
+           caso o valor seja = 0 as strings sao iguais, caso o valor seja menor que 0
+           a string 1 é menor que a string 2 e caso o valor seja maior que 0 a stringa
+           1 é maior que a string 2 */
            int x = strcmp (jogador.jogador1, jogador.jogador1);
            printf ("%d\n", x);
            system ("pause");
             system ("cls");
 
-           
+           // Este ciclo for tem a funcao de n deixar se cadastrados 2 nicknames iguais 
             for ( ; x == 0 ; ){
                 printf ("Os nicknames cadastrados sao iguai, cadastre-os novamente\n");
                 system ("pause");
