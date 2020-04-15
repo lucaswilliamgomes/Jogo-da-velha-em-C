@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+struct cadastro {
+    char jogador1 [21];
+    char jogador2 [21];
+}jogador;
+
 
 void menuInicial (void){
 
@@ -11,11 +18,22 @@ void menuInicial (void){
     printf("******************************\n");
 }
 
+void cadastrarJogadores (void){
 
+    printf("Digite o nickname do jogador 1 [com no max 20 caracteres]\n");
+    scanf (" %s", &jogador.jogador1);
+    system ("cls");
+    printf("Digite o nickname do jogador 2 [com no max 20 caracteres]\n");
+    scanf (" %s", &jogador.jogador2);
+    system ("cls");
 
+}
+
+  
 int main (void){
-    int opcao;
-    void menuInicial (void);
+    int opcao; //irá guardar o numero da opção escolhida 
+    void menuInicial (void); 
+    void cadastrarJogadores (void);
     menuInicial();
 
     scanf ("%d", &opcao);
@@ -29,11 +47,33 @@ int main (void){
         switch (opcao)
         {
          case 1 :
-           printf("\nopcao 1\n");
+           system ("cls");
+           cadastrarJogadores ();
+           printf ("o nome do jogador 1 eh %s\n", jogador.jogador1);
+           printf ("o nome do jogador 2 eh %s\n", jogador.jogador2);
+            system ("pause");
+            system ("cls");
+           
+           int x = strcmp (jogador.jogador1, jogador.jogador1);
+           printf ("%d\n", x);
+           system ("pause");
+            system ("cls");
+
+           
+            for ( ; x == 0 ; ){
+                printf ("Os nicknames cadastrados sao iguai, cadastre-os novamente\n");
+                system ("pause");
+                system ("cls");
+                cadastrarJogadores ();
+                int x = strcmp (jogador.jogador1, jogador.jogador1);
+           }
+            
+
            system("pause");
+                   
            break;
            case 2 :
-           printf("\nopcao 2\n");
+           printf("\nopcao 2\n");//inicar jogo 
            system("pause");
            break;
            case 3 :
