@@ -13,8 +13,7 @@ struct JogoDaVelha{
                        \t   ———+———+———
                        \t 2    |   |
                        \t   ———+———+———
-                       \t 3    |   |     sei que começa com 0, mas irei somar 1 
-                                        ao valor de i nos ciclos*/
+                       \t 3    |   |    */
     
 }jogo;
 
@@ -46,7 +45,12 @@ void cadastrarJogadores (void){
 
 
 int validarvitoria (char velha [3][3]){
-        if((velha[0][0]=='x')&&(velha[0][1]=='x')&&(velha[0][2]=='x')){
+    int num = 1;
+    for (num = 1; num == 9; num++)
+    {
+        
+    
+         if((velha[0][0]=='x')&&(velha[0][1]=='x')&&(velha[0][2]=='x')){
 			return 1;}
 		if((velha[1][0]=='x')&&(velha[1][1]=='x')&&(velha[1][2]=='x')){
 			return 1;}
@@ -78,9 +82,14 @@ int validarvitoria (char velha [3][3]){
 			return -1;}
 		if((velha[0][2]=='o')&&(velha[1][1]=='o')&&(velha[2][0]=='o')){
 			return -1;}
-            else { return 0; 
-            };
-}
+       
+          break;
+        } if (num == 9)
+        {
+            return 0;
+        }
+        
+     } 
 
 void imprimirjogo (char velha [3][3]){
                      printf("  \t    1   2   3  \n");
@@ -92,40 +101,57 @@ void imprimirjogo (char velha [3][3]){
 }
 
 void andamentodojogo (char velha [3][3], int a, char b){
-    int l, c, num;
+    int l, c, num, valid;
     void imprimirjogo (char velha [3][3]);
     int validarvitoria (char velha [3][3]);
     imprimirjogo (jogo.velha);
-    for  (num = 1; num <= 9 ; num++){
+    
+    for  (num = 1; num <= 9 || valid == 0; num++){
         if (num % 2 != 0)
         {
-            printf("Escolha uma linha para jogar");
-            scanf ("%d", &l);
-            printf("Escolha uma coluna para jogar");
-            scanf ("%d", &c);
+            printf("Escolha uma linha para jogar\n");
+            scanf("%d",&l);
+            printf("Escolha uma coluna para jogar\n");
+            scanf("%d",&c);
             jogo.velha [l-1][c-1] = 'x';
             imprimirjogo (jogo.velha);
-            validarvitoria(jogo.velha);
+            validarvitoria (jogo.velha);
+            valid = validarvitoria (jogo.velha);
+            if (valid == 1)
+            {
+                printf ("O jogador %s ganhou\n", jogador.jogador1);
+                   break;
+            } if (valid == 0)
+            {
+               printf ("Ojogo empatou");
+                   break;
+            }
+        
             system ("pause");
             system ("cls");
+
         } else {
-            printf("Escolha uma linha para jogar");
+            printf("Escolha uma linha para jogar\n");
             scanf ("%d", &l);
-            printf("Escolha uma coluna para jogar");
+            printf("Escolha uma coluna para jogar\n");
             scanf ("%d", &c);
             jogo.velha [l-1][c-1] = 'o';
             imprimirjogo (jogo.velha);
-            validarvitoria(jogo.velha);
+            validarvitoria (jogo.velha);
+            valid = validarvitoria (jogo.velha);
+                if (valid == -1){
+                   printf ("O jogador %s ganhou\n", jogador.jogador2);
+                   break;
+                }if (valid == 0)
+            {
+               printf ("Ojogo empatou");
+                   break;
+            }
             system ("pause");
             system ("cls");
 
-        }
-        
-        
-        
+        }   
     }
-
-
 }
 
  
@@ -181,24 +207,7 @@ int main (void){
                scanf(" %c", &b);
            }
            andamentodojogo (jogo.velha[3][3], a, b);
-           vencedor = validarvitoria (jogo.velha[3][3]);
-           if (vencedor == 1)
-           {
-               printf ("O vencedor foi quem estava com x\n");
-           };
-           if (vencedor == 0)
-           {
-               printf ("o jogo empatou\n");
-           }
-           if (vencedor == -1 )
-           {
-               printf ("O vencedor foi quem estava com 0\n");
-           }
-           
-           
-
-           
-        
+             
            system("pause");
            break;
            case 2 : // sair do jogo 
