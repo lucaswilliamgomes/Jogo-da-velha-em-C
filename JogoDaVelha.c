@@ -17,6 +17,12 @@ struct JogoDaVelha{
     
 }jogo;
 
+struct caracteresdavelha{
+    char b;
+    char c;
+}xisoubolinha;
+
+
 
 //Imprime o menu inicial
 void menuInicial (void){
@@ -45,9 +51,9 @@ void cadastrarJogadores (void){
 
 
 int validarvitoria (char velha [3][3]){
-    int num = 1;
-    for (num = 1; num == 9; num++)
-    {
+    /*int num = 1;
+    for (num = 1; num == 9; num++){*/
+    
         
     
          if((velha[0][0]=='x')&&(velha[0][1]=='x')&&(velha[0][2]=='x')){
@@ -83,11 +89,11 @@ int validarvitoria (char velha [3][3]){
 		if((velha[0][2]=='o')&&(velha[1][1]=='o')&&(velha[2][0]=='o')){
 			return -1;}
        
-          break;
+        /*  break;
         } if (num == 9)
         {
             return 0;
-        }
+        }*/
         
      } 
 
@@ -100,29 +106,30 @@ void imprimirjogo (char velha [3][3]){
                      printf("  \t 3  %c | %c | %c\n", velha[2][0],velha[2][1],velha[2][2]);
 }
 
-void andamentodojogo (char velha [3][3], int a, char b){
-    int l, c, num, valid;
+void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char segundocaractere){
+    int l, c; // Variavel que guardara a linha e a coluna no jogo da velha 
+    int num;
+    int valid;//Armazena o return da funcao validarvitoria
     void imprimirjogo (char velha [3][3]);
     int validarvitoria (char velha [3][3]);
     imprimirjogo (jogo.velha);
     
+    //Esse ciclo for e responsavel por iniciar partida e acabar com nove jogadas 
     for  (num = 1; num <= 9 || valid == 0; num++){
-        if (num % 2 != 0)
+        if (num % 2 != 0) // uma maneira que eu encontrei de alternar entre <x> e <o>
         {
             printf("Escolha uma linha para jogar\n");
             scanf("%d",&l);
             printf("Escolha uma coluna para jogar\n");
             scanf("%d",&c);
-            jogo.velha [l-1][c-1] = 'x';
+            jogo.velha [l-1][c-1] = primeirocaractere;
             imprimirjogo (jogo.velha);
             validarvitoria (jogo.velha);
             valid = validarvitoria (jogo.velha);
-            if (valid == 1)
-            {
+            if (valid == 1){
                 printf ("O jogador %s ganhou\n", jogador.jogador1);
                    break;
-            } if (valid == 0)
-            {
+            } if (valid == 0){
                printf ("Ojogo empatou");
                    break;
             }
@@ -135,7 +142,7 @@ void andamentodojogo (char velha [3][3], int a, char b){
             scanf ("%d", &l);
             printf("Escolha uma coluna para jogar\n");
             scanf ("%d", &c);
-            jogo.velha [l-1][c-1] = 'o';
+            jogo.velha [l-1][c-1] = segundocaractere;
             imprimirjogo (jogo.velha);
             validarvitoria (jogo.velha);
             valid = validarvitoria (jogo.velha);
@@ -158,12 +165,11 @@ void andamentodojogo (char velha [3][3], int a, char b){
 int main (void){
     int opcao; //irá guardar o numero da opção escolhida 
     int a; //guarda quem ira começar 
-    char b; // guarda que caractere irá começar
     int vencedor; //guarda o retorno da funcao validarvitoria
     void menuInicial (void); 
     void cadastrarJogadores (void);
     void imprimirjogo (char velha [3][3]);
-    void andamentodojogo (char velha [3][3], int a, char b);
+    void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char segundocaractere);
     int validarvitoria (char velha [3][3]);
     menuInicial();
 
@@ -201,12 +207,23 @@ int main (void){
            scanf (" %d", &a);
            if (a == 1){
               printf("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador1);
-              scanf(" %c", &b);
+              scanf(" %c", &xisoubolinha.b);
            } if (a == 2){
               printf ("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador2);
-               scanf(" %c", &b);
+               scanf(" %c", &xisoubolinha.b);
            }
-           andamentodojogo (jogo.velha[3][3], a, b);
+
+           switch (xisoubolinha.b) //Isso define qual caractere entre <x> e <o> que ira comecar
+           {                       //isso e importante para dar inicio ao game
+           case 'x':
+               xisoubolinha.c = 'o';
+               break;
+            case 'o':
+               xisoubolinha.c = 'x';           
+           default:
+               break;
+           }
+           andamentodojogo (jogo.velha[3][3], a, xisoubolinha.b, xisoubolinha.c);
              
            system("pause");
            break;
@@ -217,9 +234,5 @@ int main (void){
            default:
            break;
            }
-    
-
- 
-
 return 0;
 }
