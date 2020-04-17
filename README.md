@@ -1,3 +1,3 @@
-# Jogo da velha em C
+# Hash in C
  My firth project of programation! 
  

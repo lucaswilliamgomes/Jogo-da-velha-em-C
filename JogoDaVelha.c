@@ -92,16 +92,36 @@ void imprimirjogo (char velha [3][3]){
 }
 
 void andamentodojogo (char velha [3][3], int a, char b){
-    int l, c;
+    int l, c, num;
     void imprimirjogo (char velha [3][3]);
-    imprimirjogo (jogo.velha[l][c]);
-    if (a == 1 && b == 'x'){
-        printf("Escolha uma linha para jogar %s", jogador.jogador1);
-        scanf ("%d", &l);
-        printf("Escolha uma coluna para jogar %s", jogador.jogador1);
-        scanf ("%d", &c);
-        jogo.velha [l][c] == 'x';
-        imprimirjogo (jogo.velha[l][c]);
+    int validarvitoria (char velha [3][3]);
+    imprimirjogo (jogo.velha);
+    for  (num = 1; num <= 9 ; num++){
+        if (num % 2 != 0)
+        {
+            printf("Escolha uma linha para jogar");
+            scanf ("%d", &l);
+            printf("Escolha uma coluna para jogar");
+            scanf ("%d", &c);
+            jogo.velha [l-1][c-1] = 'x';
+            imprimirjogo (jogo.velha);
+            validarvitoria(jogo.velha);
+            system ("pause");
+            system ("cls");
+        } else {
+            printf("Escolha uma linha para jogar");
+            scanf ("%d", &l);
+            printf("Escolha uma coluna para jogar");
+            scanf ("%d", &c);
+            jogo.velha [l-1][c-1] = 'o';
+            imprimirjogo (jogo.velha);
+            validarvitoria(jogo.velha);
+            system ("pause");
+            system ("cls");
+
+        }
+        
+        
         
     }
 
@@ -111,11 +131,14 @@ void andamentodojogo (char velha [3][3], int a, char b){
  
 int main (void){
     int opcao; //irá guardar o numero da opção escolhida 
-    int a;
-    char b;
+    int a; //guarda quem ira começar 
+    char b; // guarda que caractere irá começar
+    int vencedor; //guarda o retorno da funcao validarvitoria
     void menuInicial (void); 
     void cadastrarJogadores (void);
     void imprimirjogo (char velha [3][3]);
+    void andamentodojogo (char velha [3][3], int a, char b);
+    int validarvitoria (char velha [3][3]);
     menuInicial();
 
     scanf ("%d", &opcao);
@@ -157,7 +180,24 @@ int main (void){
               printf ("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador2);
                scanf(" %c", &b);
            }
-           printf ("%d , %c\n", a, b);
+           andamentodojogo (jogo.velha[3][3], a, b);
+           vencedor = validarvitoria (jogo.velha[3][3]);
+           if (vencedor == 1)
+           {
+               printf ("O vencedor foi quem estava com x\n");
+           };
+           if (vencedor == 0)
+           {
+               printf ("o jogo empatou\n");
+           }
+           if (vencedor == -1 )
+           {
+               printf ("O vencedor foi quem estava com 0\n");
+           }
+           
+           
+
+           
         
            system("pause");
            break;
