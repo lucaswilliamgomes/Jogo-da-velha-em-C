@@ -58,9 +58,22 @@ CADASTRO DOS JOGADORES(Será um função especial);
      scanf ("%c", &jogador2[20] );
 
      //Para caso o nome do jogador1 seja igual ao jogador2
-     if (jogador1[20] = jogador2[20]) {
+     if (jogador1[20] == jogador2[20]) {
          printf("O nome do primeiro jogador é igual ao do segundo\n");
          printf ("DIGITE O NOME DO SEGUNDO JOGADOR NOVAMENTE\n ");
          scanf ("%c", &jogador2[20] );
      }
+
+    jogo da velha [3][3]
+
+         1   2   3
+     1     |   |  
+        ———+———+———
+     2     |   |
+        ———+———+———
+     3     |   |
+
+
+
+
 
