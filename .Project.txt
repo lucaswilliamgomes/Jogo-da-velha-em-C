@@ -74,6 +74,34 @@ CADASTRO DOS JOGADORES(Será um função especial);
      3     |   |
 
 
+a = 1  jogador 1 começa
+
+a =  2 jogador 2 começa
+
+xisoubolinha =  x  x começa
+xisoubolinha =  o  o começa
+
+valid = 1     x vence
+valid = -1    o vence
 
 
+se jogador 1 começa 
+    se ele começa com x 
+      se valid =  1 ele ganha 
+      se valid =  0 jogo empatado
 
+
+se jogador 1 começa 
+    se ele começa com o
+      se valid =  -1 ele ganha 
+      se valid =  0 jogo empatado
+
+se jogador 2 começa 
+    se ele começa com x 
+      se valid =  1 ele ganha 
+      se valid =  0 jogo empatado
+
+se jogador 2 começa 
+    se ele começa com o
+      se valid =  -1 ele ganha 
+      se valid =  0 jogo empatado

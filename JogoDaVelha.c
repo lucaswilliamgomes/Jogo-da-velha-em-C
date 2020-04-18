@@ -14,9 +14,9 @@ struct JogoDaVelha{
                        \t 2    |   |
                        \t   ———+———+———
                        \t 3    |   |    */
-    
 }jogo;
-
+//Mesmo achando desnecessaria criei essa struct so pra armazenar qual caractere
+//iria comecar, <x> ou <o>.
 struct caracteresdavelha{
     char b;
     char c;
@@ -28,10 +28,11 @@ struct caracteresdavelha{
 void menuInicial (void){
 
     printf("********JOGO DA VELHA********\n\n");
-    printf("DIGITE UM OPCAO PARA CONTINUAR \n\n");
+    printf("\t MENU PRINCIPAL \n\n");
     printf("1 - Iniciar Jogo\n");
     printf("2 - Sair do jogo\n\n");
     printf("******************************\n");
+    printf("Digite uma opcao para continuar:");
 }
 // Cadastra os 2 jogadores, usando a struct cadastro 
 void cadastrarJogadores (void){
@@ -51,11 +52,8 @@ void cadastrarJogadores (void){
 
 
 int validarvitoria (char velha [3][3]){
-    /*int num = 1;
-    for (num = 1; num == 9; num++){*/
     
-        
-    
+
          if((velha[0][0]=='x')&&(velha[0][1]=='x')&&(velha[0][2]=='x')){
 			return 1;}
 		if((velha[1][0]=='x')&&(velha[1][1]=='x')&&(velha[1][2]=='x')){
@@ -88,13 +86,12 @@ int validarvitoria (char velha [3][3]){
 			return -1;}
 		if((velha[0][2]=='o')&&(velha[1][1]=='o')&&(velha[2][0]=='o')){
 			return -1;}
-       
-        /*  break;
-        } if (num == 9)
-        {
+        else {
             return 0;
-        }*/
-        
+        }
+            
+       
+    
      } 
 
 void imprimirjogo (char velha [3][3]){
@@ -115,6 +112,11 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
     imprimirjogo (jogo.velha);
     
     //Esse ciclo for e responsavel por iniciar partida e acabar com nove jogadas 
+   
+   
+   
+   
+   
     for  (num = 1; num <= 9 || valid == 0; num++){
         if (num % 2 != 0) // uma maneira que eu encontrei de alternar entre <x> e <o>
         {
@@ -124,40 +126,37 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
             scanf("%d",&c);
             jogo.velha [l-1][c-1] = primeirocaractere;
             imprimirjogo (jogo.velha);
-            validarvitoria (jogo.velha);
             valid = validarvitoria (jogo.velha);
-            if (valid == 1){
-                printf ("O jogador %s ganhou\n", jogador.jogador1);
-                   break;
-            } if (valid == 0){
-               printf ("Ojogo empatou");
-                   break;
+            if (a == 1){
+                 if (valid == 1){
+                   printf ("O jogador %s ganhou\n", jogador.jogador1);
+                     break;
+                }
             }
         
-            system ("pause");
-            system ("cls");
 
-        } else {
+        } if(num % 2 == 0) {
             printf("Escolha uma linha para jogar\n");
             scanf ("%d", &l);
             printf("Escolha uma coluna para jogar\n");
             scanf ("%d", &c);
             jogo.velha [l-1][c-1] = segundocaractere;
             imprimirjogo (jogo.velha);
-            validarvitoria (jogo.velha);
-            valid = validarvitoria (jogo.velha);
+            valid =validarvitoria (jogo.velha);
                 if (valid == -1){
                    printf ("O jogador %s ganhou\n", jogador.jogador2);
                    break;
-                }if (valid == 0)
-            {
-               printf ("Ojogo empatou");
-                   break;
-            }
-            system ("pause");
-            system ("cls");
+                }
+            
 
-        }   
+             }  
+          if (num == 9)
+          {
+              if (valid == 0){
+                  printf ("O jogo empatou\n");
+                  break;
+              }
+          }      
     }
 }
 
@@ -170,7 +169,6 @@ int main (void){
     void cadastrarJogadores (void);
     void imprimirjogo (char velha [3][3]);
     void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char segundocaractere);
-    int validarvitoria (char velha [3][3]);
     menuInicial();
 
     scanf ("%d", &opcao);
@@ -180,37 +178,36 @@ int main (void){
     for ( ; opcao != 1 && opcao != 2 && opcao != 3 ; )
     {   system ("cls");
         printf ("\nOPCAO INVALIDA\n");
-        menuInicial();
-        scanf ("%d", &opcao);
+        main ();
     }
     /*  Switch Case e algo muito util pasa se usar em menus,
         cada opcao ira levar a um caminho a ser seguido pelo programa */
         switch (opcao)
         {
          case 1 ://iniciar jogo
-           system ("cls");
-           cadastrarJogadores ();//chama a funcao cadastrar jogadores
-            system ("cls");
-           /* strcmp e usado para comparar strings, 
-           caso o valor seja = 0 as strings sao iguais, caso o valor seja menor que 0
-           a string 1 é menor que a string 2 e caso o valor seja maior que 0 a stringa
-           1 é maior que a string 2 */
-           int x = strcmp (jogador.jogador1, jogador.jogador2);
-           // Este ciclo for tem a funcao de n deixar ser cadastrados 2 nicknames iguais 
-            for ( ; x == 0 ; ){
-                printf ("Os nicknames cadastrados sao iguais, cadastre-os novamente\n");
-                system ("pause");
-                system ("cls");
-                main ();
+              system ("cls");
+              cadastrarJogadores ();//chama a funcao cadastrar jogadores
+              system ("cls");
+              /* strcmp e usado para comparar strings, 
+              caso o valor seja = 0 as strings sao iguais, caso o valor seja menor que 0
+              a string 1 é menor que a string 2 e caso o valor seja maior que 0 a stringa
+              1 é maior que a string 2 */
+              int x = strcmp (jogador.jogador1, jogador.jogador2);
+               // Este ciclo for tem a funcao de n deixar ser cadastrados 2 nicknames iguais 
+                for ( ; x == 0 ; ){
+                   printf ("Os nicknames cadastrados sao iguais, cadastre-os novamente\n");
+                   system ("pause");
+                   system ("cls");
+                   main ();
            }
-           printf ("Quem vai comecar o jogo ? <%s-1> ou <%s-2>\n", jogador.jogador1 , jogador.jogador2);
-           scanf (" %d", &a);
-           if (a == 1){
-              printf("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador1);
-              scanf(" %c", &xisoubolinha.b);
-           } if (a == 2){
-              printf ("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador2);
-               scanf(" %c", &xisoubolinha.b);
+              printf("Quem vai comecar o jogo ? <%s-1> ou <%s-2>\n", jogador.jogador1 , jogador.jogador2);
+              scanf (" %d", &a);
+                if (a == 1){
+                  printf("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador1);
+                 scanf(" %c", &xisoubolinha.b);
+                 } if (a == 2){
+                     printf ("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador2);
+                     scanf(" %c", &xisoubolinha.b);
            }
 
            switch (xisoubolinha.b) //Isso define qual caractere entre <x> e <o> que ira comecar
