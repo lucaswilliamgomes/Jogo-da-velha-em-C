@@ -115,6 +115,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
                  jogo.velha [l-1][c-1] = primeirocaractere;
+                 system ("cls");
                  imprimirjogo (jogo.velha);
                  valid = validarvitoria (jogo.velha);
                     
@@ -128,6 +129,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
                          jogo.velha [l-1][c-1] = segundocaractere;
+                         system ("cls");
                          imprimirjogo (jogo.velha);
                          valid =validarvitoria (jogo.velha);
                          if (valid == -1){
@@ -152,6 +154,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
                  jogo.velha [l-1][c-1] = primeirocaractere;
+                 system ("cls");
                  imprimirjogo (jogo.velha);
                  valid = validarvitoria (jogo.velha);
                     
@@ -165,6 +168,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
                          jogo.velha [l-1][c-1] = segundocaractere;
+                         system ("cls");
                          imprimirjogo (jogo.velha);
                          valid =validarvitoria (jogo.velha);
                          if (valid == 1){
@@ -187,6 +191,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
                  jogo.velha [l-1][c-1] = primeirocaractere;
+                 system ("cls");
                  imprimirjogo (jogo.velha);
                  valid = validarvitoria (jogo.velha);
                     
@@ -200,6 +205,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
                          jogo.velha [l-1][c-1] = segundocaractere;
+                         system ("cls");
                          imprimirjogo (jogo.velha);
                          valid =validarvitoria (jogo.velha);
                          if (valid == -1){
@@ -222,6 +228,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
                  jogo.velha [l-1][c-1] = primeirocaractere;
+                 system ("cls");
                  imprimirjogo (jogo.velha);
                  valid = validarvitoria (jogo.velha);
                     
@@ -235,6 +242,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
                          jogo.velha [l-1][c-1] = segundocaractere;
+                         system ("cls");
                          imprimirjogo (jogo.velha);
                          valid =validarvitoria (jogo.velha);
                          if (valid == 1){
@@ -289,14 +297,17 @@ int main (void){
                    system ("cls");
                    main ();
            }
-              printf("Quem vai comecar o jogo ? <%s-1> ou <%s-2>\n", jogador.jogador1 , jogador.jogador2);
+              printf("Quem vai comecar o jogo ? [%s-1] ou [%s-2]\n", jogador.jogador1 , jogador.jogador2);
+              printf("Digite o valor da opcao escolhida:"); 
               scanf (" %d", &a);
                 if (a == 1){
                 printf("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador1);
+                printf("Digite a opcao escolhida:");
                 scanf(" %c", &xisoubolinha.b);
 
                  } if (a == 2){
                      printf ("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador2);
+                     printf("Digite a opcao escolhida:");
                      scanf(" %c", &xisoubolinha.b);
            }
 
@@ -310,8 +321,8 @@ int main (void){
            default:
                break;
            }
-
-           printf("Ok, o jogador %s ira começar jogando com '%c'\n", jogador.jogador1, xisoubolinha.b);
+           system ("cls");
+           printf("Ok, o jogador %s ira comecar jogando com '%c'\n", jogador.jogador1, xisoubolinha.b);
            printf("e o jogador %s ira jogar com '%c'\n", jogador.jogador2, xisoubolinha.c);
            andamentodojogo (jogo.velha[3][3], a, xisoubolinha.b, xisoubolinha.c);
              
