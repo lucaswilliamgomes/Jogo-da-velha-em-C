@@ -272,7 +272,7 @@ int main (void){
     
     /* Esse ciclo tem a funcao de tornar invalida qualquer escolha 
     de opcao que nao esta no menu */
-    for ( ; opcao != 1 && opcao != 2 && opcao != 3 ; )
+    for ( ;opcao != 1 && opcao != 2; )
     {   system ("cls");
         printf ("\nOPCAO INVALIDA\n");
         main ();
@@ -300,10 +300,25 @@ int main (void){
               printf("Quem vai comecar o jogo ? [%s-1] ou [%s-2]\n", jogador.jogador1 , jogador.jogador2);
               printf("Digite o valor da opcao escolhida:"); 
               scanf (" %d", &a);
+                  for ( ; a != 1 && a != 2 ; ){
+                    printf ("OPCAO INVALIDA\n");
+                    system ("pause");
+                     system ("cls");
+                printf("Quem vai comecar o jogo ? [%s-1] ou [%s-2]\n", jogador.jogador1 , jogador.jogador2);
+                     printf("Digite o valor da opcao escolhida:"); 
+                    scanf (" %d", &a);
+                }
                 if (a == 1){
                 printf("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador1);
                 printf("Digite a opcao escolhida:");
                 scanf(" %c", &xisoubolinha.b);
+                  for( ; xisoubolinha.b != 'x' && xisoubolinha.b != 'o' ; ){
+                     printf ("OPCAO INVALIDA\n");
+                     system ("pause");
+                     system ("cls");
+                     printf("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador1);
+                     printf("Digite a opcao escolhida:");
+                  }
 
                  } if (a == 2){
                      printf ("ok, o %s ira comecar jogando, mas antes escolha entre <x> e <o>\n", jogador.jogador2);
