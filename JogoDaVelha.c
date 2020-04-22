@@ -8,9 +8,8 @@ struct cadastro {
 }jogador;
 
 struct JogoDaVelha{
-    char velha [3][3];  /*{{'\0','\0','\0'},
-                          {'\0','\0','\0'},
-                          {'\0','\0','\0'}};   /*     1   2   3
+    char velha [3][3];
+                                              /*     1   2   3
                                                \t 1    |   |  
                                                \t   ———+———+———
                                                \t 2    |   |
@@ -114,6 +113,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  scanf("%d",&l);
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
+
+                     for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                         printf("Essa casa ja esta preenchida\n");
+                         printf("Jogue novamente..\n");
+                         system ("pause");
+                         printf("Escolha uma linha para jogar\n");
+                         scanf("%d",&l);
+                         printf("Escolha uma coluna para jogar\n");
+                         scanf("%d",&c);      
+                 }
+                
                  jogo.velha [l-1][c-1] = primeirocaractere;
                  system ("cls");
                  imprimirjogo (jogo.velha);
@@ -128,6 +138,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          scanf ("%d", &l);
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
+
+                          for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                             printf("Essa casa ja esta preenchida\n");
+                             printf("Jogue novamente..\n");
+                             system ("pause");
+                             printf("Escolha uma linha para jogar\n");
+                             scanf("%d",&l);
+                             printf("Escolha uma coluna para jogar\n");
+                             scanf("%d",&c);   
+                          }  
+
                          jogo.velha [l-1][c-1] = segundocaractere;
                          system ("cls");
                          imprimirjogo (jogo.velha);
@@ -153,6 +174,18 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  scanf("%d",&l);
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
+
+                 for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                     printf("Essa casa ja esta preenchida\n");
+                     printf("Jogue novamente..\n");
+                     system ("pause");
+                     printf("Escolha uma linha para jogar\n");
+                     scanf("%d",&l);
+                     printf("Escolha uma coluna para jogar\n");
+                     scanf("%d",&c);   
+                          }  
+
+
                  jogo.velha [l-1][c-1] = primeirocaractere;
                  system ("cls");
                  imprimirjogo (jogo.velha);
@@ -167,6 +200,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          scanf ("%d", &l);
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
+
+                         for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                             printf("Essa casa ja esta preenchida\n");
+                             printf("Jogue novamente..\n");
+                             system ("pause");
+                             printf("Escolha uma linha para jogar\n");
+                             scanf("%d",&l);
+                             printf("Escolha uma coluna para jogar\n");
+                             scanf("%d",&c);   
+                          }  
+
                          jogo.velha [l-1][c-1] = segundocaractere;
                          system ("cls");
                          imprimirjogo (jogo.velha);
@@ -190,6 +234,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  scanf("%d",&l);
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
+
+                    for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                     printf("Essa casa ja esta preenchida\n");
+                     printf("Jogue novamente..\n");
+                     system ("pause");
+                     printf("Escolha uma linha para jogar\n");
+                     scanf("%d",&l);
+                     printf("Escolha uma coluna para jogar\n");
+                     scanf("%d",&c);   
+                     }  
+
                  jogo.velha [l-1][c-1] = primeirocaractere;
                  system ("cls");
                  imprimirjogo (jogo.velha);
@@ -204,6 +259,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          scanf ("%d", &l);
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
+
+                        for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                             printf("Essa casa ja esta preenchida\n");
+                             printf("Jogue novamente..\n");
+                             system ("pause");
+                             printf("Escolha uma linha para jogar\n");
+                             scanf("%d",&l);
+                             printf("Escolha uma coluna para jogar\n");
+                             scanf("%d",&c);   
+                        }  
+
                          jogo.velha [l-1][c-1] = segundocaractere;
                          system ("cls");
                          imprimirjogo (jogo.velha);
@@ -227,6 +293,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                  scanf("%d",&l);
                  printf("Escolha uma coluna para jogar\n");
                  scanf("%d",&c);
+
+                  for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                     printf("Essa casa ja esta preenchida\n");
+                     printf("Jogue novamente..\n");
+                     system ("pause");
+                     printf("Escolha uma linha para jogar\n");
+                     scanf("%d",&l);
+                     printf("Escolha uma coluna para jogar\n");
+                     scanf("%d",&c);   
+                          }  
+
                  jogo.velha [l-1][c-1] = primeirocaractere;
                  system ("cls");
                  imprimirjogo (jogo.velha);
@@ -241,6 +318,17 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          scanf ("%d", &l);
                          printf("Escolha uma coluna para jogar\n");
                          scanf ("%d", &c);
+
+                          for ( ; jogo.velha [l-1][c-1] == 'o' || jogo.velha [l-1][c-1] == 'x' ;  ){
+                             printf("Essa casa ja esta preenchida\n");
+                             printf("Jogue novamente..\n");
+                             system ("pause");
+                             printf("Escolha uma linha para jogar\n");
+                             scanf("%d",&l);
+                             printf("Escolha uma coluna para jogar\n");
+                             scanf("%d",&c);   
+                        }    
+
                          jogo.velha [l-1][c-1] = segundocaractere;
                          system ("cls");
                          imprimirjogo (jogo.velha);
