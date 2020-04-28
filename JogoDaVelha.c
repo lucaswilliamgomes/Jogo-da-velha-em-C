@@ -48,9 +48,9 @@ void cadastrarJogadores (void){
     system ("cls");
 }
 
-
+// essa funcao serve para validar se o jogador <x> ou o jogador <o> ganhou ou se teve empate
 int validarvitoria (char velha [3][3]){
-
+// lista todas as possibilidades de vitoria para <x> e para <o>
      if((velha[0][0]=='x')&&(velha[0][1]=='x')&&(velha[0][2]=='x')){
 			return 1;}
 	if((velha[1][0]=='x')&&(velha[1][1]=='x')&&(velha[1][2]=='x')){
@@ -88,6 +88,7 @@ int validarvitoria (char velha [3][3]){
         }
      } 
 
+//Mostra o jogo da velha
 void imprimirjogo (char velha [3][3]){
                      printf("  \t    1   2   3  \n");
                      printf("  \t 1  %c | %c | %c\n", velha[0][0],velha[0][1],velha[0][2]);
@@ -97,6 +98,7 @@ void imprimirjogo (char velha [3][3]){
                      printf("  \t 3  %c | %c | %c\n", velha[2][0],velha[2][1],velha[2][2]);
 }
 
+//Responsavel pelo andamento do jogo ate vitoria de um dos jogadores ou empate 
 void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char segundocaractere){
     int l, c; // Variavel que guardara a linha e a coluna no jogo da velha 
     int num;
@@ -105,7 +107,9 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
     int validarvitoria (char velha [3][3]);
     imprimirjogo (jogo.velha);
 
+//Esse if é para caso o jogador 1 começe jogando e ele tenha escolhido <x>,assim o jogo seguira corretamente 
     if ( a == 1 && xisoubolinha.b == 'x'){
+        // este ciclo significa ate 9 jogadas (caso haja empate), assim pensei em numeros impares e pares para alternar entre os jogadores a vez de jogar  
          for  (num = 1; num <= 9 || valid == 0; num++){ 
               if (num % 2 != 0){ // uma maneira que eu encontrei de alternar entre <x> e <o>
     
@@ -156,7 +160,7 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                          if (valid == -1){
                               printf ("O jogador %s ganhou\n", jogador.jogador2);
                                   break;}    
-        }  
+        }            // quando o numero de vezes que o ciclo for executado for igual a 9 e a funcao validarvitoria retornar 0, o jogo tera um empate 
                      if (num == 9){
                          if (valid == 0){
                             printf ("O jogo empatou\n");
@@ -165,10 +169,10 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                }
             } 
 
-
+//Esse if é para caso o jogador 1 começe jogando e ele tenha escolhido <o>,assim o jogo seguira corretamente 
      if ( a == 1 && primeirocaractere == 'o'){
          for  (num = 1; num <= 9 || valid == 0; num++){ 
-              if (num % 2 != 0){ // uma maneira que eu encontrei de alternar entre <x> e <o>
+              if (num % 2 != 0){
     
                  printf("Escolha uma linha para jogar\n");
                  scanf("%d",&l);
@@ -226,9 +230,11 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                     }       
                }
             }
+
+//Esse if é para caso o jogador 2 começe jogando e ele tenha escolhido <x>,assim o jogo seguira corretamente 
      if ( a == 2 && primeirocaractere == 'x'){
          for  (num = 1; num <= 9 || valid == 0; num++){ 
-              if (num % 2 != 0){ // uma maneira que eu encontrei de alternar entre <x> e <o>
+              if (num % 2 != 0){ 
     
                  printf("Escolha uma linha para jogar\n");
                  scanf("%d",&l);
@@ -284,10 +290,12 @@ void andamentodojogo (char velha [3][3], int a, char primeirocaractere, char seg
                             break;}   
                     }       
                }
-            }         
+            }    
+
+//Esse if é para caso o jogador 2 começe jogando e ele tenha escolhido <o>,assim o jogo seguira corretamente 
      if ( a == 2 && primeirocaractere == 'o'){
          for  (num = 1; num <= 9 || valid == 0; num++){ 
-              if (num % 2 != 0){ // uma maneira que eu encontrei de alternar entre <x> e <o>
+              if (num % 2 != 0){ 
     
                  printf("Escolha uma linha para jogar\n");
                  scanf("%d",&l);
